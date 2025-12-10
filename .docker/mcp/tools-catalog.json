@@ -1,0 +1,144 @@
+{
+  "tools": [
+    {
+      "name": "find_ips_exploiting_cve",
+      "description": "Mencari daftar IP Address yang terdeteksi mencoba mengeksploitasi CVE tertentu",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "cve_id": {
+            "type": "string",
+            "description": "CVE ID (Common Vulnerabilities and Exposures), contoh: 'CVE-2025-5777'"
+          }
+        },
+        "required": ["cve_id"]
+      },
+      "returns": "List IP addresses dan tanggal dalam format JSON"
+    },
+    {
+      "name": "check_cve_history_by_ip",
+      "description": "Melihat riwayat CVE apa saja yang pernah dicoba dieksploitasi oleh satu IP tertentu",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "ip_address": {
+            "type": "string",
+            "description": "IP Address yang akan dicek riwayatnya"
+          }
+        },
+        "required": ["ip_address"]
+      },
+      "returns": "List CVE dan tanggal dalam format JSON"
+    },
+    {
+      "name": "get_monthly_payload_history",
+      "description": "Mengambil riwayat payload (script/file berbahaya) yang ditangkap pada bulan tertentu",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "year": {
+            "type": "string",
+            "description": "Tahun (format: '2024')"
+          },
+          "month": {
+            "type": "string",
+            "description": "Bulan (format: '04')"
+          },
+          "nsample": {
+            "type": "integer",
+            "description": "Jumlah sample yang akan diambil (default: 10)",
+            "default": 10
+          }
+        },
+        "required": ["year", "month"]
+      },
+      "returns": "List tanggal, service, attribute, hash, dan value dalam format JSON"
+    },
+    {
+      "name": "analyze_payload_hash",
+      "description": "Menganalisis detail payload berdasarkan Hash-nya",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "payload_hash": {
+            "type": "string",
+            "description": "Hash payload yang didapat dari get_monthly_payload_history"
+          }
+        },
+        "required": ["payload_hash"]
+      },
+      "returns": "Detail payload termasuk konten hex dan perintah yang dijalankan"
+    },
+    {
+      "name": "scan_threat_feeds",
+      "description": "Melakukan scan terhadap satu IP di berbagai database Threat Intelligence sekaligus",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "ip_address": {
+            "type": "string",
+            "description": "IP Address yang akan discan"
+          }
+        },
+        "required": ["ip_address"]
+      },
+      "returns": "Status dari Tor Exit Node, ThreatFox, Project Honeypot, Emerging Threats, dan Bogon"
+    },
+    {
+      "name": "get_bad_hosts",
+      "description": "Mengambil daftar 'Bad Hosts' (IP berbahaya) yang terdeteksi dalam 24 jam terakhir",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "description": "Jumlah maksimal host yang ditampilkan (default: 10)",
+            "default": 10
+          }
+        },
+        "required": []
+      },
+      "returns": "List host dengan count tertinggi dalam format JSON"
+    },
+    {
+      "name": "get_active_services",
+      "description": "Melihat services/protokol jaringan yang diemulasikan honeypot dan sedang aktif diserang",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "returns": "List services yang sedang aktif diserang"
+    },
+    {
+      "name": "check_ip_details",
+      "description": "Melakukan pengecekan mendalam pada satu IP Address (Geolocation, ASN, Threat Lists)",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "ip_address": {
+            "type": "string",
+            "description": "IP Address yang akan dicek secara detail"
+          }
+        },
+        "required": ["ip_address"]
+      },
+      "returns": "Informasi lengkap termasuk network info dan threat lists"
+    },
+    {
+      "name": "check_internet_scanner",
+      "description": "Mendeteksi apakah IP tersebut adalah scanner internet dikenal (Shodan/Censys)",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "ip_address": {
+            "type": "string",
+            "description": "IP Address yang akan dicek"
+          }
+        },
+        "required": ["ip_address"]
+      },
+      "returns": "Informasi apakah IP adalah internet scanner yang dikenal"
+    }
+  ]
+}

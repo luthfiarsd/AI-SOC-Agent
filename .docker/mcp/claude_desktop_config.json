@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "ai-soc-agent": {
+      "command": "python",
+      "args": ["D:\\Project\\MCP\\AI-SOC-Agent\\server.py"],
+      "env": {
+        "PYTHONUNBUFFERED": "1"
+      }
+    }
+  }
+}

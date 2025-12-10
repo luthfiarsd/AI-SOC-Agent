@@ -1,0 +1,54 @@
+{
+  "catalogs": [
+    {
+      "id": "honeydb-threat-intelligence",
+      "name": "HoneyDB Threat Intelligence",
+      "description": "Katalog tools untuk analisis threat intelligence menggunakan HoneyDB API",
+      "category": "security",
+      "tools": [
+        "find_ips_exploiting_cve",
+        "check_cve_history_by_ip",
+        "get_monthly_payload_history",
+        "analyze_payload_hash",
+        "scan_threat_feeds",
+        "get_bad_hosts",
+        "get_active_services",
+        "check_ip_details",
+        "check_internet_scanner"
+      ],
+      "tags": ["security", "threat-intelligence", "cve", "malware", "honeypot"],
+      "use_cases": [
+        {
+          "name": "CVE Exploitation Analysis",
+          "description": "Analisis IP yang mengeksploitasi CVE tertentu",
+          "tools": ["find_ips_exploiting_cve", "check_cve_history_by_ip"]
+        },
+        {
+          "name": "Payload Investigation",
+          "description": "Investigasi payload berbahaya yang tertangkap",
+          "tools": ["get_monthly_payload_history", "analyze_payload_hash"]
+        },
+        {
+          "name": "IP Reputation Check",
+          "description": "Pengecekan reputasi dan threat intelligence IP",
+          "tools": [
+            "scan_threat_feeds",
+            "check_ip_details",
+            "check_internet_scanner"
+          ]
+        },
+        {
+          "name": "Bad Hosts Monitoring",
+          "description": "Monitoring host berbahaya dalam 24 jam terakhir",
+          "tools": ["get_bad_hosts", "get_active_services"]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "last_updated": "2025-12-10",
+    "total_tools": 9,
+    "total_catalogs": 1
+  }
+}

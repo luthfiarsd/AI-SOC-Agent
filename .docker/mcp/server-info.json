@@ -1,0 +1,25 @@
+{
+  "name": "ai-soc-agent",
+  "version": "1.0.0",
+  "description": "MCP Server untuk analisis keamanan siber menggunakan HoneyDB API",
+  "server": {
+    "type": "stdio",
+    "command": "python",
+    "args": ["server.py"]
+  },
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false
+  },
+  "environment": {
+    "required": ["API_ID", "API_KEY"],
+    "optional": []
+  },
+  "metadata": {
+    "author": "AI-SOC-Agent Team",
+    "homepage": "https://github.com/yourusername/AI-SOC-Agent",
+    "license": "MIT",
+    "tags": ["security", "threat-intelligence", "honeydb", "cve", "soc"]
+  }
+}
